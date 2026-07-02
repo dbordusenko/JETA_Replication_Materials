@@ -1,0 +1,15 @@
+# Environment used to generate the reference outputs in this deposit.
+# The random seed is fixed (RNG_SEED = 2025), so results are deterministic
+# within a given environment. Linear models (Ridge, Logistic Regression)
+# reproduce exactly across versions; tree ensembles (Random Forest,
+# Gradient Boosting) may vary by a small margin (<~0.02 in R2/AUC) across
+# scikit-learn / OS versions, which is expected and documented in README.md.
+
+# Requires Python >= 3.10 (reference environment: Python 3.12).
+
+numpy==2.4.4
+pandas==3.0.2
+scipy==1.17.1
+scikit-learn==1.8.0
+matplotlib==3.10.8
+seaborn==0.13.2

@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use these materials, please cite both the dataset/software and the associated article."
+title: "POFC Framework — Empirical Test Suite and Synthetic Dataset (v3)"
+abstract: >-
+  Reproducibility package for the Predictive Operational Financial Control
+  (POFC) framework and the Decision Latency (DT = Tr - Td) construct in
+  capital-intensive industries. Includes the Python empirical test suite, the
+  fully synthetic calibrated dataset (N = 420), model-results and covariate-
+  balance tables, and publication figures. Running the script under the fixed
+  random seed (2025) regenerates the dataset, tables, and figures.
+type: software
+version: "3.0"
+date-released: 2026-07-02
+license: MIT
+keywords:
+  - decision latency
+  - predictive financial control
+  - machine learning
+  - ERP integration
+  - cost overrun
+  - capital-intensive industries
+  - management accounting
+  - synthetic data
+  - reproducibility
+authors:
+  - family-names: Bordusenko
+    given-names: Dmytro
+    affiliation: "American Bureau of Shipping (ABS)"
+    orcid: "https://orcid.org/0009-0007-4643-2457"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.XXXXXXX"
+    description: "Zenodo DOI (insert the DOI assigned on publication)"
+references:
+  - type: article
+    title: "Decision Latency and the Predictive Operational Financial Control Framework in Capital-Intensive Industries"
+    authors:
+      - family-names: Bordusenko
+        given-names: Dmytro
+    journal: "Journal of Emerging Technologies in Accounting"
+    year: 2026
+    status: "under review"
