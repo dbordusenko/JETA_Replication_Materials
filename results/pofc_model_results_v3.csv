@@ -1,0 +1,7 @@
+Model,MAE,RMSE,MAPE_%,R²,CV_R²,task,Accuracy,Precision,Recall,F1,ROC-AUC,CV_AUC
+Ridge + Interactions,0.0802,0.0984,84.34,0.2222,-0.1523,Regression,,,,,,
+Random Forest,0.071,0.089,73.81,0.3644,0.2512,Regression,,,,,,
+Gradient Boosting,0.0749,0.0939,78.16,0.2927,0.118,Regression,,,,,,
+Logistic Regression,,,,,,Classification,0.7842,0.6864,0.7434,0.7138,0.831,0.8236
+Random Forest,,,,,,Classification,0.8147,0.7156,0.81,0.7598,0.84,0.7882
+Gradient Boosting,,,,,,Classification,0.7897,0.7022,0.7276,0.7147,0.8601,0.739

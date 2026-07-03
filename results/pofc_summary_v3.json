@@ -1,0 +1,130 @@
+{
+  "dataset": {
+    "N": 420,
+    "features": 22,
+    "period": "2019-2024",
+    "seed": 2025,
+    "selection_mechanism": "propensity-score (budget, duration, CPI, ERP-legacy)",
+    "pofc_overrun_rate": 0.165
+  },
+  "balance": {
+    "budget_planned_kUSD": {
+      "SMD": 0.306,
+      "balanced": "\u2717 IMBALANCED"
+    },
+    "duration_months": {
+      "SMD": 0.203,
+      "balanced": "\u2717 IMBALANCED"
+    },
+    "advance_pct": {
+      "SMD": 0.078,
+      "balanced": "\u2713"
+    },
+    "capex_opex_ratio": {
+      "SMD": 0.072,
+      "balanced": "\u2713"
+    },
+    "fx_exposure": {
+      "SMD": 0.064,
+      "balanced": "\u2713"
+    },
+    "supplier_concentration": {
+      "SMD": 0.008,
+      "balanced": "\u2713"
+    },
+    "cpi_t0": {
+      "SMD": 0.19,
+      "balanced": "\u2713"
+    },
+    "spi_t0": {
+      "SMD": 0.021,
+      "balanced": "\u2713"
+    },
+    "dso_days": {
+      "SMD": 0.092,
+      "balanced": "\u2713"
+    },
+    "erp_legacy_score": {
+      "SMD": 0.538,
+      "balanced": "\u2717 IMBALANCED"
+    }
+  },
+  "decision_latency": {
+    "manual_mean_d": 37.0,
+    "pofc_mean_d": 11.4,
+    "reduction_pct": 69.2,
+    "cohens_d": 3.774,
+    "pearson_r": 0.5409,
+    "ci95": [
+      24.38,
+      26.9
+    ]
+  },
+  "regression_best": {
+    "model": "Gradient Boosting",
+    "MAE": 0.0749,
+    "RMSE": 0.0939,
+    "MAPE_%": 78.16,
+    "R\u00b2": 0.2927,
+    "CV_R\u00b2": 0.118
+  },
+  "classification_best": {
+    "model": "Gradient Boosting",
+    "Accuracy": 0.7897,
+    "Precision": 0.7022,
+    "Recall": 0.7276,
+    "F1": 0.7147,
+    "ROC-AUC": 0.8601,
+    "CV_AUC": 0.739
+  },
+  "monte_carlo": {
+    "n": 50000,
+    "po_manual": 0.7452,
+    "po_pofc": 0.0213,
+    "p80_manual": 9401.8,
+    "p80_pofc": 7846.4
+  },
+  "dso": {
+    "threshold": 78.4,
+    "alerts": 8,
+    "precision": 0.625,
+    "recall": 0.0284
+  },
+  "kpis": {
+    "Decision Latency (days)": {
+      "manual": 37.0242,
+      "pofc": 11.3972,
+      "delta_pct": -69.22
+    },
+    "Overrun Ratio (mean)": {
+      "manual": 0.0773,
+      "pofc": -0.023,
+      "delta_pct": -129.74
+    },
+    "% Projects Over Budget": {
+      "manual": 0.6025,
+      "pofc": 0.1648,
+      "delta_pct": -72.65
+    },
+    "Forecast MAPE (manual, %)": {
+      "manual": 0.1471,
+      "pofc": 0.1463,
+      "delta_pct": -0.51
+    },
+    "Forecast MAPE (POFC, %)": {
+      "manual": 0.1468,
+      "pofc": 0.1045,
+      "delta_pct": -28.81
+    },
+    "Report Prep Time (days)": {
+      "manual": 1.0102,
+      "pofc": 1.0006,
+      "delta_pct": -0.96
+    },
+    "OpEx Actual (kUSD)": {
+      "manual": 462.7881,
+      "pofc": 454.8841,
+      "delta_pct": -1.71
+    }
+  }
+}
