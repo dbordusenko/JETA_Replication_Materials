@@ -25,7 +25,7 @@ POFC-Empirical-Suite-v3/
 │   ├── pofc_model_results_v3.csv # Regression + classification metrics (Table 3)
 │   ├── pofc_balance_table.csv    # Covariate balance / standardized mean differences
 │   ├── pofc_summary_v3.json      # Machine-readable summary of key results
-│   └── sampling_rationale.txt    # Six-sentence sampling rationale (as in the paper)
+│   └── sampling_rationale.txt    # Sampling rationale statement for reviewers
 └── figures/
     └── fig1..fig9 .png           # 300-dpi analytical figures
 ```
@@ -67,7 +67,7 @@ The script runs end-to-end in roughly one minute on a standard machine and write
 | `overrun_ratio` / `overrun_flag` | Continuous cost-overrun ratio / binary overrun (>5%) label |
 | `budget_planned_kUSD`, `duration_months` | Project scale covariates |
 | `erp_legacy_score`, `erp_real_time` | ERP maturity (instrument / moderator) |
-| `propensity_score` | Estimated probability of POFC adoption (for IPW) |
+| `propensity_score` | Data-generating probability of POFC adoption (used as covariate and for IPW) |
 | `cpi_t0`, `spi_t0`, `cv_index`, `sv_index` | Earned-value indices |
 | `mape_manual`, `mape_pofc`, `report_days_*`, `opex_*` | KPI fields for the aggregate comparison |
 
@@ -79,9 +79,15 @@ Running the script regenerates the files in `results/` and `figures/`. Because t
 
 - **Fully deterministic across environments** (pure NumPy / linear solvers): the synthetic dataset, the covariate-balance table, the Decision Latency analysis (Manual 37.0 d vs. POFC 11.4 d; −69.2%; Cohen's d = 3.77; r = 0.54), the Monte Carlo projections (P(overrun > 5%): 74.5% manual vs. 2.1% POFC; P80 EAC USD 9,402k vs. 7,846k; −15.7% mean EAC), and the linear models (Ridge R² = 0.222; Logistic Regression ROC-AUC = 0.831). These reproduce exactly.
 
-- **Reproducible within a small tolerance** (tree ensembles): Random Forest and Gradient Boosting metrics may differ by up to roughly 0.02 in R²/ROC-AUC across scikit-learn and operating-system versions, owing to low-level floating-point and threading differences. This is expected behavior for these estimators and does not affect any conclusion in the paper. The exact values reported in the manuscript (Table 3) correspond to the author's original environment (documented above); the reference values in this deposit's `results/pofc_model_results_v3.csv` were produced with the pinned environment and agree within this tolerance.
+- **Tree ensembles** (Random Forest, Gradient Boosting): with the pinned `requirements.txt` these also reproduce exactly. On other scikit-learn or OS versions they may differ slightly because of low-level floating-point and threading differences.
 
-To reproduce the manuscript's Table 3 values as closely as possible, install the pinned `requirements.txt` before running.
+The values in `results/` are the values reported in the manuscript (Table 3, Results section, Figures 1–9).
+
+### Weighting
+
+All four models are trained with inverse-probability weights, and the hold-out and cross-validated metrics in `pofc_model_results_v3.csv` are IPW-weighted, i.e. they describe performance in the balanced pseudo-population. Figure 4 and the ROC panel of Figure 6 report the same IPW-weighted R² / AUC; the confusion matrix in Figure 6 shows unweighted counts.
+
+The covariate-balance table reports SMDs before (`SMD`) and after (`SMD_IPW`) weighting: 7/10 covariates are below 0.20 before weighting and 10/10 after (maximum 0.135).
 
 ---
 
@@ -93,8 +99,8 @@ Released under the MIT License (see `LICENSE`). The synthetic dataset and genera
 
 Please cite both the archived materials and the article:
 
-> Bordusenko, D. (2026). *POFC Framework — Empirical Test Suite and Synthetic Dataset (v3)* [Data set and software]. Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX
+> Bordusenko, D. (2026). *POFC Framework — Empirical Test Suite and Synthetic Dataset (v3)* [Data set and software]. Zenodo. https://doi.org/10.5281/zenodo.21180754
 
 > Bordusenko, D. (2026). Decision Latency and the Predictive Operational Financial Control Framework in Capital-Intensive Industries. *Journal of Emerging Technologies in Accounting.*
 
-Replace `10.5281/zenodo.XXXXXXX` with the DOI assigned by Zenodo on publication, and enter the same DOI in the manuscript's Data Availability Statement.
+The DOI above is the one cited in the manuscript's Data Availability Statement.

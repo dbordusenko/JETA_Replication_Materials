@@ -9,8 +9,8 @@ abstract: >-
   balance tables, and publication figures. Running the script under the fixed
   random seed (2025) regenerates the dataset, tables, and figures.
 type: software
-version: "3.0"
-date-released: 2026-07-02
+version: "3.1"
+date-released: 2026-09-17
 license: MIT
 keywords:
   - decision latency
@@ -29,8 +29,8 @@ authors:
     orcid: "https://orcid.org/0009-0007-4643-2457"
 identifiers:
   - type: doi
-    value: "10.5281/zenodo.XXXXXXX"
-    description: "Zenodo DOI (insert the DOI assigned on publication)"
+    value: "10.5281/zenodo.21180754"
+    description: "Zenodo DOI cited in the manuscript"
 references:
   - type: article
     title: "Decision Latency and the Predictive Operational Financial Control Framework in Capital-Intensive Industries"
