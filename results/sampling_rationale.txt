@@ -1,20 +1,16 @@
 
 SAMPLING RATIONALE — STATEMENT FOR REVIEWERS
 =============================================
-The synthetic dataset (N=420) was generated to replicate the selection
-mechanism observed in real capital-intensive project portfolios, where POFC
-adoption is not randomised but driven by observable organisational factors:
-larger budgets (greater automation ROI), longer project durations (more
-exposure to financial drift), and legacy ERP infrastructure readiness
-(instrument variable). A propensity score model (logistic regression on
-budget, duration, CPI, and ERP legacy score) was estimated and its output
-included as a control variable in all regression specifications. Inverse
-Probability Weighting (IPW) was applied to adjust for selection in all model
-training steps. Covariate balance was verified via Standardised Mean
-Difference (SMD < 0.20 for all features; Table 3 in paper). POFC projects
-deliberately retain a residual overrun rate of approximately 15%, reflecting
-the irreducible budget uncertainty floor (sigma_e = 0.055) present in any
-capital-intensive environment. The instrument variable (ERP legacy score)
-satisfies the relevance condition (strong effect on DT adoption, F > 30) and
-the exclusion restriction (no direct path from legacy ERP to overrun ratio
-after controlling for DT and ERP real-time status).
+The synthetic dataset (N=420) replicates a non-random adoption mechanism:
+POFC assignment follows a logistic propensity model on budget, duration,
+historical CPI and ERP legacy score. The resulting propensity score is
+included as a covariate in all model specifications, and inverse-
+probability weights (IPW) are applied when training all four models and
+when computing hold-out and cross-validated performance metrics. Before
+weighting, seven of ten covariates have SMD < 0.20 (budget, duration and
+ERP legacy score are imbalanced); after IPW weighting all ten covariates
+have SMD < 0.20 (see SMD_IPW in pofc_balance_table.csv). External shocks
+affecting 7% of projects and an irreducible noise floor (sigma_eps =
+0.065) leave POFC projects with a residual overrun rate of 16.5%. All
+results are conditional on this simulated data-generating process and are
+not field observations.
